@@ -2,33 +2,37 @@
 
 <div id="products">
 
- <table class="table">
-      <thead>
-        <tr>
-          <th scope="col">id</th>
-          <th scope="col">name:</th>
-          <th scope="col">description:</th>
-          <th scope="col">price subunit</th>
-            <th scope="col">price currency</th>
-            <th scope="col">created at</th>
-            <th scope="col">updated at</th>
-          <th scope="col">edit</th>
-          <th scope="col">delete</th>
-        </tr>
-      </thead>
-      <tbody class="table-group-divider">
+  <table class="table">
+    <thead>
+    <tr>
+      <th scope="col">id</th>
+      <th scope="col">name:</th>
+      <th scope="col">description:</th>
+      <th scope="col">price subunit</th>
+      <th scope="col">price currency</th>
+      <th scope="col">created at</th>
+      <th scope="col">updated at</th>
+      <% if current_user.admin %>
+        <th scope="col">edit</th>
+        <th scope="col">delete</th>
+      <% end %>
+    </tr>
+    </thead>
+    <tbody class="table-group-divider">
 
-          <% @products.each do |product| %>
+    <% @products.each do |product| %>
 
 
-            <%= render "product_row", product: product %>
+      <%= render "product_row", product: product %>
 
-          <% end %>
+    <% end %>
 
-      </tbody>
-    </table>
+    </tbody>
+  </table>
 
 </div>
 
 </br>
-<%= link_to "New product", new_product_path, class:"btn btn-primary" %>
+<% if current_user.admin %>
+  <%= link_to "New product", new_product_path, class: "btn btn-primary" %>
+<% end %>
