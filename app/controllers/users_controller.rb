@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   # GET /products or /products.json
   def index
     @users = User.all
+    @admin_count = User.where(admin: true).count
   end
 
   def upgrade_to_admin
