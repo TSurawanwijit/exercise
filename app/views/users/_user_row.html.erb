@@ -3,6 +3,13 @@
   <tr>
     <th scope="row"><%= user.id %></th>
     <td><%= user.email %></td>
+    <td>
+      <% if user.admin %>
+        Admin
+      <% else %>
+        User
+      <% end %>
+    </td>
   </tr>
 
 </div>
