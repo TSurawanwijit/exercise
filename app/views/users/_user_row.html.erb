@@ -10,6 +10,11 @@
         User
       <% end %>
     </td>
+    <td>
+      <% if current_user.admin && user.admin == false %>
+        <%= button_to "Upgrade to Admin", users_upgrade_to_admin_url(user), method: :patch, params: { id: user.id }, class:"btn btn-danger", form: { data: { turbo_confirm: 'Are you sure?' } } %>
+      <% end %>
+    </td>
   </tr>
 
 </div>

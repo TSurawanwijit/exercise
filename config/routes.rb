@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 
   #TODO users
   get 'users/index'
+  patch 'users/upgrade_to_admin'
 
   root 'home#index'
 
